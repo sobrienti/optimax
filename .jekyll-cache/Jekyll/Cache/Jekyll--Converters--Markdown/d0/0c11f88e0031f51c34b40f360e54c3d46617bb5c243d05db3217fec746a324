@@ -1,0 +1,111 @@
+I"y#<p>If you already have an analytics tool running on your website, it may be counter-productive to re-configure your key events every time you add a new tool. Therefore, there is value in re-purposing your existing event tracking implementation for any new analytics tool you want to add on your website.</p>
+
+<p>This is why in this tutorial we will see how to re-use Google Analytics event and forward them to Optimizely.</p>
+
+<h2 id="send-google-analytics-events-to-optimizely-web">Send Google Analytics events to Optimizely Web</h2>
+
+<p>This integration will forward GA events that exist in a whitelist and send them straight to Optimizely Web.</p>
+
+<h3 id="step-1-add-this-sample-code-to-optimizelys-project-javascript">Step 1: Add this sample code to Optimizely’s Project Javascript.</h3>
+
+<p>Optimizely’s Project Javascript allows you to run custom Javascript code on any page where the Optimizely snippet is present.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td> --><td class="rouge-code"><pre><span class="nb">window</span><span class="p">[</span><span class="dl">"</span><span class="s2">optimizely</span><span class="dl">"</span><span class="p">].</span><span class="nx">push</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">addListener</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">lifecycle</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">initialized</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">handler</span><span class="dl">"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  
+<span class="kd">var</span> <span class="nx">utils</span> <span class="o">=</span> <span class="nx">optimizely</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">utils</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">utils</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">ga</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">ga</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="dl">'</span><span class="s1">getAll</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">whitelist</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">add_to_cart,add_to_wishlist</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// EDIT HERE TO ADD YOUR EVENTS</span>
+    <span class="kd">var</span> <span class="nx">eventWhitelist</span> <span class="o">=</span> <span class="nx">whitelist</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="c1">// Modifies sendHitTask to log the model's "hitPayload" field.</span>
+    <span class="nx">ga</span><span class="p">.</span><span class="nx">getAll</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="kd">set</span><span class="p">(</span><span class="dl">'</span><span class="s1">customTask</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">&amp;t</span><span class="dl">'</span><span class="p">)</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">pageview</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">action</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">pageview</span><span class="dl">'</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">action</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">eventAction</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">category</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">eventCategory</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">label</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">eventLabel</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">}</span>
+
+      <span class="c1">// We replicate based on GA's event label</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">eventWhitelist</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">eventWhitelist</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+            <span class="nb">window</span><span class="p">.</span><span class="nx">optimizely</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+                <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">event</span><span class="dl">"</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">eventName</span><span class="dl">"</span><span class="p">:</span> <span class="nx">action</span><span class="p">,</span>
+                <span class="dl">"</span><span class="s2">tags</span><span class="dl">"</span><span class="p">:</span> <span class="p">{}</span>
+            <span class="p">});</span>                    
+    <span class="p">}</span> 
+    <span class="p">});</span>
+<span class="p">});</span>
+
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="step-2-edit-the-whitelist-to-authorise-specific-events">Step 2: Edit the whitelist to authorise specific events</h3>
+
+<p>By default, the integration only forwards events if the event names are part of a whitelist. Line 14, you will see a variable called <em>whitelist</em> which contains a comma-separated list of the whitelisted events.</p>
+
+<p>Edit this variable to include a comma-separated list of the Google Analytics event names you’d like to forward to Optimizely.</p>
+
+<h3 id="step-3-create-the-event-names-in-optimizely">Step 3: Create the event names in Optimizely</h3>
+
+<p>For Optimizely to recognise the Google Analytics events, the events need to be re-created in the Optimizely dashboard. This is a one-off step. Go to Optimizely, create a custom event that uses the same event name as your Google Analytics event.</p>
+
+<h3 id="step-4-benefit">Step 4: Benefit!</h3>
+
+<p>That’s it, now Optimizely Web automatically receives Google Analytics events.</p>
+
+<h2 id="send-google-analytics-events-to-optimizely-fs">Send Google Analytics events to Optimizely FS</h2>
+
+<p>Coming soon!</p>
+:ET
