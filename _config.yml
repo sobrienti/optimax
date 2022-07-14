@@ -21,18 +21,18 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: OptiMax3                       # the main title
+title: OptiPilot                       # the main title
 
 tagline: Optimizely on steroids   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  OptiPilot provides custom solutions for your Optimizely implementation
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
 github:
-  username: github_username             # change to your github username
+  username: sobrienti             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -40,7 +40,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name:
+  name: Volutoso
   email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -80,10 +80,10 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: 
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: 'assets/img/misc/pilot.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
