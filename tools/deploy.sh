@@ -64,6 +64,7 @@ test() {
 }
 
 resume_site_dir() {
+    echo "step0"
   if [[ -n $_baseurl ]]; then
     # Move the site file to the regular directory '_site'
     echo "step1"
