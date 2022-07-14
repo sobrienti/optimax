@@ -8,7 +8,7 @@
 
 set -eu
 
-PAGES_BRANCH="gh-pages" # site will be built on this branch!
+PAGES_BRANCH="gh-production" # site will be built on this branch!
 
 SITE_DIR="_site"
 
@@ -65,7 +65,7 @@ test() {
 
 resume_site_dir() {
     echo "step0"
-  #if [[ -n $_baseurl ]]; then
+ # if [[ -n $_baseurl ]]; then
     # Move the site file to the regular directory '_site'
     echo "step1"
     mv "$SITE_DIR$_baseurl" "${SITE_DIR}-rename"
@@ -80,7 +80,7 @@ resume_site_dir() {
 setup_gh() {
      echo "step4bis"
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
-  echo "step5"
+  
     _no_pages_branch=true
     git checkout -b "$PAGES_BRANCH"
       
