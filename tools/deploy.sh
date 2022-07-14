@@ -8,7 +8,7 @@
 
 set -eu
 
-PAGES_BRANCH="gh-production" # site will be built on this branch!
+PAGES_BRANCH="gh-pages" # site will be built on this branch!
 
 SITE_DIR="_site"
 
