@@ -20,7 +20,7 @@ _no_pages_branch=false
 
 _backup_dir="$(mktemp -d)"
 
-_baseurl="/"
+_baseurl=""
 
 help() {
   echo "Build, test and then deploy the site content to 'origin/<pages_branch>'"
@@ -65,7 +65,7 @@ test() {
 
 resume_site_dir() {
     echo "step0"
-  if [[ -n $_baseurl ]]; then
+  #if [[ -n $_baseurl ]]; then
     # Move the site file to the regular directory '_site'
     echo "step1"
     mv "$SITE_DIR$_baseurl" "${SITE_DIR}-rename"
