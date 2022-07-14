@@ -8,7 +8,7 @@
 
 set -eu
 
-PAGES_BRANCH="gh-production" # site will be built on this branch!
+PAGES_BRANCH="gh-production2" # site will be built on this branch!
 
 SITE_DIR="_site"
 
@@ -102,7 +102,7 @@ flush() {
   rm -rf .[^.] .??*
 
   shopt -s dotglob nullglob
-  #mv "$_backup_dir"/* .
+  mv "$_backup_dir"/* .
   [[ -f ".nojekyll" ]] || echo "" >".nojekyll"
 }
 
@@ -132,7 +132,7 @@ main() {
   fi
 
   setup_gh
-  #backup
+  backup
   flush
   deploy
 }
