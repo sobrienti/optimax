@@ -66,9 +66,13 @@ test() {
 resume_site_dir() {
   if [[ -n $_baseurl ]]; then
     # Move the site file to the regular directory '_site'
+    echo "step1"
     mv "$SITE_DIR$_baseurl" "${SITE_DIR}-rename"
+    echo "step2"
     rm -rf "$SITE_DIR"
+    echo "step3"
     mv "${SITE_DIR}-rename" "$SITE_DIR"
+    echo "step4"
   fi
 }
 
