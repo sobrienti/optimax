@@ -80,12 +80,14 @@ resume_site_dir() {
 setup_gh() {
      echo "step4bis"
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
+  echo "step5"
     _no_pages_branch=true
     git checkout -b "$PAGES_BRANCH"
-      echo "step5"
+      
   else
+   echo "step6"
     git checkout -f "$PAGES_BRANCH"
-    echo "step6"
+   
   fi
 }
 
