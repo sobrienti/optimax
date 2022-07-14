@@ -81,13 +81,17 @@ setup_gh() {
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
     _no_pages_branch=true
     git checkout -b "$PAGES_BRANCH"
+      echo "step5"
   else
     git checkout -f "$PAGES_BRANCH"
+    echo "step6"
   fi
 }
 
 backup() {
+    echo "step7"
  mv "$SITE_DIR"/* "$_backup_dir"
+ echo "step8"
  mv .git "$_backup_dir"
 
   # When adding custom domain from Github website,
