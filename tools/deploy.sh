@@ -74,7 +74,7 @@ resume_site_dir() {
     echo "step3"
     mv "${SITE_DIR}-rename" "$SITE_DIR"
     echo "step4"
-  fi
+ # fi
 }
 
 setup_gh() {
