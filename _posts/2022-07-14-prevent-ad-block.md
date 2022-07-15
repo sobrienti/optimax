@@ -33,7 +33,7 @@ Select *HTTP API* as the API type:
 ![AWS API Gateway](/image3.png)
 _Select API type_
 
-### Step 3: create the required routes 
+### Step 3: Create the required routes 
 
 Now we are going to create our API routes and where the API will forward the requests to. 
 
