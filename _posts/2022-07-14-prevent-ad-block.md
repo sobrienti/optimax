@@ -33,12 +33,15 @@ Select *HTTP API* as the API type:
 ![AWS API Gateway](/image3.png)
 _Select API type_
 
-Now we are going to create our API endpoints and where the API will forward the requests to. 
+### Step 3: create the required routes 
 
-We'll need 3 endpoints: 
-1. One that allows us to retrieve the Optimizely snippet (if you are using Web)
-2. One that allows us to send decision & conversion events (logx.optimizely.com)
-3. One that allows us to retrieve the Optimizely datafile (if you are using Full Stack)
+Now we are going to create our API routes and where the API will forward the requests to. 
+
+We'll need 3 routes, depending on the Optimizely product you use: 
+1. One that allows us to retrieve the Optimizely snippet (if you are using Web). The snippet is fetched via a `GET` request done to https://cdn.optimizely.com. You can find the full snippet URL inside your Project settings. 
+2. One that allows us to send decision & conversion events (logx.optimizely.com). This route will be fetched via a `POST` request to https://logx.optimizely.com/v1/event. 
+3. One that allows us to retrieve the Optimizely datafile (if you are using Full Stack). This route will be fetched via a `GET` request to https://cdn.optimizely.com/datafiles. You can find your datafile URL inside your Project settings. 
+
 
 ![AWS API Gateway](/image4.png)
 _Add to these values your Optimizely snippet and/or datafile_
@@ -57,7 +60,7 @@ Change the ANY to be exactly the same as the method on the right-hand side. (POS
 
 Congrats you now have a working API which will proxy requests to Optimizely.com
 
-### Step 2: Fetch Optimizely from your newly-created API gateway
+### Step 4: Fetch Optimizely from your newly-created API gateway
 
 Now that we've got a working API, it's time to update our website to start fetching from this API. 
 
