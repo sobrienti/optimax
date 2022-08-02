@@ -33,7 +33,7 @@ Select *HTTP API* as the API type:
 ![AWS API Gateway](/image3.png)
 _Select API type_
 
-### Step 3: Create the required routes 
+### Step 2: Create the required routes 
 
 Now we are going to create our API routes and where the API will forward the requests to. 
 
@@ -60,7 +60,7 @@ Change the ANY to be exactly the same as the method on the right-hand side. (POS
 
 Congrats you now have a working API which will proxy requests to Optimizely.com
 
-### Step 4: Fetch Optimizely from your newly-created API gateway
+### Step 3: Fetch Optimizely from your newly-created API gateway
 
 Now that we've got a working API, it's time to update our website to start fetching from this API. 
 
