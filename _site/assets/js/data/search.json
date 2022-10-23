@@ -4,7 +4,7 @@
     "title": "Prevent Optimizely from being blocked by ad-blockers",
     "url": "/posts/prevent-ad-block/",
     "categories": "Security & Safety",
-    "tags": "Optimizely Web, Optimizely Full Stack",
+    "tags": "",
     "date": "2022-07-13 00:00:00 -0500",
     
 
@@ -19,7 +19,7 @@
     "title": "Send Events from Optimizely Full Stack to Optimizely Web",
     "url": "/posts/fs-to-web/",
     "categories": "Integrations, Events",
-    "tags": "Optimizely Web, Optimizely Full Stack",
+    "tags": "",
     "date": "2022-07-13 00:00:00 -0500",
     
 
@@ -34,7 +34,7 @@
     "title": "Forward Google Analytics events to Optimizely",
     "url": "/posts/forward-google-analytics-events/",
     "categories": "Events",
-    "tags": "Optimizely Web, Google Analytics, Events",
+    "tags": "",
     "date": "2022-07-12 00:00:00 -0500",
     
 
