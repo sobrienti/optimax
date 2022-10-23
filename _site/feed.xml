@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>OptiPilot</title>
   <subtitle>OptiPilot provides custom solutions for your Optimizely implementation</subtitle>
-  <updated>2022-10-23T16:54:18-05:00</updated>
+  <updated>2022-10-23T16:57:00-05:00</updated>
   <author>
     <name>David Sertillange</name>
     <uri>http://localhost:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://localhost:4000/posts/prevent-ad-block/" rel="alternate" type="text/html" title="Prevent Optimizely from being blocked by ad-blockers" />
     <published>2022-07-13T00:00:00-05:00</published>
   
-    <updated>2022-10-23T16:44:04-05:00</updated>
+    <updated>2022-10-23T16:54:32-05:00</updated>
   
     <id>http://localhost:4000/posts/prevent-ad-block/</id>
     <content src="http://localhost:4000/posts/prevent-ad-block/" />
@@ -62,7 +62,7 @@ The key solution is to proxy requests via an API g...
     <link href="http://localhost:4000/posts/fs-to-web/" rel="alternate" type="text/html" title="Send Events from Optimizely Full Stack to Optimizely Web" />
     <published>2022-07-13T00:00:00-05:00</published>
   
-    <updated>2022-10-23T16:44:04-05:00</updated>
+    <updated>2022-10-23T16:54:32-05:00</updated>
   
     <id>http://localhost:4000/posts/fs-to-web/</id>
     <content src="http://localhost:4000/posts/fs-to-web/" />
@@ -103,7 +103,7 @@ Wi...
     <link href="http://localhost:4000/posts/forward-google-analytics-events/" rel="alternate" type="text/html" title="Forward Google Analytics events to Optimizely" />
     <published>2022-07-12T00:00:00-05:00</published>
   
-    <updated>2022-10-23T16:44:04-05:00</updated>
+    <updated>2022-10-23T16:54:32-05:00</updated>
   
     <id>http://localhost:4000/posts/forward-google-analytics-events/</id>
     <content src="http://localhost:4000/posts/forward-google-analytics-events/" />
