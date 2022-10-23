@@ -1,7 +1,7 @@
 ---
 title: Forward Google Analytics events to Optimizely
 date: 2022-07-12 01-00
-categories: []
+categories: [Events]
 tags: [Optimizely Web, Google Analytics, Events]     # TAG names should always be lowercase
 author: david
 ---

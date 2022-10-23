@@ -1,8 +1,8 @@
 ---
 title: Prevent Optimizely from being blocked by ad-blockers
 date: 2022-07-13 01-00
-categories: []
-tags: [Optimizely Web, Optimizely Full Stack, Events]     # TAG names should always be lowercase
+categories: [Security & Safety]
+tags: [Optimizely Web, Optimizely Full Stack]     # TAG names should always be lowercase
 author: david
 img_path: /assets/img/posts/prevent-ad-blockers
 ---
